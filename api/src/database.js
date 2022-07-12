@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 
 // Connect to Mongodb
 function connectToDatabase() {
-    mongoose.connect("mongodb+srv://borges:*******@cluster0.hvasiwo.mongodb.net/?retryWrites=true&w=majority", 
+    mongoose.connect(process.env.DATABASE_URL, 
     {
         useNewUrlParser: true,
         useUnifiedTopology: true

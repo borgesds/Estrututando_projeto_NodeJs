@@ -16,6 +16,7 @@
     "mongose": "^0.0.2-security"
   },
   "devDependencies": {
+    "dotenv": "^16.0.1",
     "nodemon": "^2.0.19"
   }
 }

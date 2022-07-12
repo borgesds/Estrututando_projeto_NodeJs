@@ -3,6 +3,8 @@ Projeto de estudo de uma videoteca,
 estruturando api no NodeJS.
 */
 
+require("dotenv").config()
+
 const express = require("express")
 const mongoose = require("mongoose")
 
