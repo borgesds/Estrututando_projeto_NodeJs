@@ -1,8 +1,24 @@
+/* 
+Projeto de estudo de uma videoteca,
+estruturando api no NodeJS.
+*/
+
 const express = require("express")
 const mongoose = require("mongoose")
 const routes = require("./routes")
 
-mongoose.connect("mongodb+srv://borges:<password>@cluster0.hvasiwo.mongodb.net/?retryWrites=true&w=majority")
+// Connect to Mongodb
+mongoose.connect("mongodb+srv://borges:<password>@cluster0.hvasiwo.mongodb.net/?retryWrites=true&w=majority", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+
+const db = mongoose.connection
+db.on("error", (error) => console.error(error))
+db.once("open", () => console.log("📂📦 Connected to the database 📦📂"))
+
+
+// Connect to the server
 const app = express()
 const port = 3333
 
