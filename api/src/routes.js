@@ -4,8 +4,8 @@ const routes = express.Router()
 // Buscando arquivos controllers
 const VideoController = require("./controllers/videoController")
 
-
-routes.get("/", (req, res) => res.send("Hello World!"))
 routes.get("/videos", VideoController.index)
+routes.post("/videos", VideoController.store)
+
 
 module.exports = routes
