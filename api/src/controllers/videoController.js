@@ -43,14 +43,37 @@ module.exports = {
             return res.status(400).json({ error: "You must inform a new title or a new link" })
         }
 
-        if (title) req.video.title = title
-        if (link) req.video.link = link
+        if (title) res.video.title = title
+        if (link) res.video.link = link
 
         try {
             await res.video.save()
             return res.status(200).json({ message: "Video updated successfully" })
         } catch (err) {
             res.status(500).json({ error: err.message })
+        }
+    },
+
+    async delete(req, res) {
+        try {
+            await res.delete.video.remove()
+            return res.status(200).json({ message: "Video deleted successfully!" })
+        } catch (err) {
+            return res.status(500).json({ error: err.message })
+        }
+    },
+
+    async updateLike(req, res) {
+        res.video.liked = !res.video.liked
+
+        try {
+            await res.video.save()
+
+            return res.status(200).json({
+                message: `Video ${res.video.liked ? 'liked' : 'unliked'} successfully`
+            })
+        } catch (err) {
+            res.status(400).json({ error: err.message })
         }
     },
 }
