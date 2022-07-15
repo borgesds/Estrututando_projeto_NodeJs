@@ -7,5 +7,7 @@ const VideoController = require("./controllers/videoController")
 routes.get("/videos", VideoController.index)
 routes.post("/videos", VideoController.store)
 
+routes.put("/videos/:id", VideoMiddleware.validateId, VideoController.update)
+
 
 module.exports = routes
